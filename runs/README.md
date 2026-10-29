@@ -5,6 +5,10 @@ The raw output of `python -m champion gate` the first time each blind set was sc
 straight from a sealed folder outside the repo, which is why their paths differ; holdout-1 had already been copied
 into `cases/`.
 
+The times are real and close together because Claude Code wrote the code: the whole repo, all three blind rounds
+included, was built in one session of about 90 minutes on 29 Oct 2026, and each round of fixes took minutes. The
+first commit (08:47 UTC) came two minutes after holdout-3's first run and holds its fixes.
+
 What these logs can't show: the code as it was at each run. I didn't commit before each first run, so you can't
 check those states out, and the repo's history starts after all three. That's the gap in the evidence. From now on,
 every blind set gets scored on a tagged commit first, so a checkout reproduces its first run.

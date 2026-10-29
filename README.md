@@ -4,7 +4,7 @@ When a past champion changes jobs, this finds them at the new company. When it i
 
 [![test](https://github.com/Manveen07/champion-move-checker/actions/workflows/test.yml/badge.svg)](https://github.com/Manveen07/champion-move-checker/actions/workflows/test.yml)
 
-Python 3.11+, nothing to install · 60 tests · a release gate in CI · made-up data · built in one day (29 Oct 2026) with Claude Code
+Python 3.11+, nothing to install · 60 tests · a release gate in CI · made-up data · built in one session (about 90 minutes, 29 Oct 2026) with Claude Code
 
 ```
 $ python -m champion gate cases/dev.jsonl --matcher naive      # the naive version
