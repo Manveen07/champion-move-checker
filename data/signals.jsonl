@@ -1,0 +1,22 @@
+{"id": "s01", "name": "Bob Chen", "company": "Fabrikam", "title": "CFO", "city": "Austin", "profile": "https://linkedin.example/in/robert-chen-4471", "started": "2026-06", "history": ["Northwind Travel"]}
+{"id": "s02", "name": "Priya Raman", "company": "Litware", "title": "Product Designer", "city": "Chennai", "profile": null, "started": "2025-11", "history": ["Adatum", "Proseware"]}
+{"id": "s03", "name": "Daniel Okafor", "company": "Proseware", "title": "VP Operations", "city": "Austin", "profile": null, "started": "2026-04", "history": ["Tailspin Toys", "Woodgrove"]}
+{"id": "s04", "name": "Kate Byrne", "company": "Lamna Health", "title": "Head of Procurement", "city": "Dublin", "profile": null, "started": "2026-03", "history": ["Adatum Corporation"]}
+{"id": "s05", "name": "James Smith", "company": "Contoso", "title": "Head of Procurement", "city": "London", "profile": null, "started": "2026-04", "history": ["Woodgrove"]}
+{"id": "s06", "name": "James Smith", "company": "Fabrikam", "title": "Sales Director", "city": "London", "profile": null, "started": "2026-03", "history": ["Woodgrove", "Litware"]}
+{"id": "s07", "name": "Grace Lin", "company": "Northwind Travel", "title": "COO", "city": "Singapore", "profile": null, "started": "2026-05", "history": ["Treyline"]}
+{"id": "s08", "name": "Elena Rossi", "company": "Adatum", "title": "Office Manager", "city": "Milan", "profile": null, "started": "2026-01", "history": ["Contoso"]}
+{"id": "s09", "name": "Anna Kowalski", "company": "Orbitly", "title": "Head of Ops", "city": "Prague", "profile": "https://linkedin.example/in/anna-novak-22", "started": "2026-05", "history": ["Proseware"]}
+{"id": "s10", "name": "Marcus Bell", "company": "Lamna Health", "title": "RevOps Director", "city": "Seattle", "profile": "https://linkedin.example/in/marcus-bell-ops", "started": "2026-07", "history": ["Northwind Travel"]}
+{"id": "s11", "name": "Kenji Mori", "company": "Quillon Ltd", "title": "VP Finance", "city": "Osaka", "profile": "https://linkedin.example/in/kenji-mori-q", "started": "2026-08", "history": ["Quillon"]}
+{"id": "s12", "name": "Sofia Petrova", "company": "Woodgrove", "title": "Finance Director", "city": "Sofia", "profile": null, "started": "2026-06", "history": null}
+{"id": "s13", "name": "David Cohen", "company": "Contoso", "title": "VP Operations", "city": "New York", "profile": null, "started": "2026-07", "history": ["Orbitly", "Fabrikam"]}
+{"id": "s14", "name": "David Cohen", "company": "Adatum", "title": "Engineer", "city": "Tel Aviv", "profile": null, "started": "2025-10", "history": ["Proseware"]}
+{"id": "s15", "name": "Amara Nwosu", "company": "Tailspin Toys", "title": "CFO", "city": "Lagos", "profile": "https://linkedin.example/in/amara-nwosu-cfo", "started": "2026-05", "history": ["Kestrel Freight"]}
+{"id": "s16", "name": "Mei Tanaka", "company": "Quillon", "title": "Head of Procurement", "city": "Tokyo", "profile": null, "started": "2026-05", "history": ["Lamna Health"]}
+{"id": "s17", "name": "Oliver Hughes", "company": "Contoso", "title": "Travel Manager", "city": "London", "profile": null, "started": "2026-04", "history": ["Woodgrove"]}
+{"id": "s18", "name": "Chloe Martin", "company": "Litware", "title": "Ops Lead", "city": "Paris", "profile": null, "started": "2026-02", "history": ["Northwind Travel"]}
+{"id": "s19", "name": "Priya Raman", "company": "Proseware", "title": "Director of Travel", "city": "Bengaluru", "profile": null, "started": "2026-08", "history": ["Contoso"]}
+{"id": "s20", "name": "Hannah Weiss", "company": "Orbitly", "title": "Office Lead", "city": "Munich", "profile": null, "started": "2026-06", "history": ["Woodgrove"]}
+{"id": "s21", "name": "Lukas Brandt", "company": "Kestrel Freight", "title": "Office Manager", "city": "Munich", "profile": null, "started": "2026-09", "history": ["Orbitly"]}
+{"id": "s22", "name": "Mei Tanaka", "company": "Fabrikam", "title": "Designer", "city": "Osaka", "profile": null, "started": "2025-12", "history": ["Contoso"]}

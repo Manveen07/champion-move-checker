@@ -1,0 +1,16 @@
+id,name,company,title,city,profile,last_seen
+ch01,Robert Chen,Northwind Travel,VP Finance,Austin,https://linkedin.example/in/robert-chen-4471,2026-03-10
+ch02,Priya Raman,Contoso,Head of Travel,Bengaluru,,2026-05-02
+ch03,Daniel Okafor,Tailspin Toys,Director of Operations,Austin,,2026-02-10
+ch04,Katherine Byrne,Adatum,Travel Program Lead,Dublin,,2026-01-15
+ch05,James Smith,Woodgrove,Procurement Director,London,,2026-01-30
+ch06,Grace Lin,Trey Research,COO,Singapore,,2026-02-14
+ch07,Elena Rossi,Contoso,Travel Manager,Milan,,2026-07-20
+ch08,Anna Novak,Proseware,Ops Manager,Prague,https://linkedin.example/in/anna-novak-22,2026-02-20
+ch09,Marcus Bell,Northwind Travel,Sales Ops Lead,Denver,https://linkedin.example/in/marcus-bell-ops,2026-04-15
+ch10,Kenji Mori,Quillon,Finance Manager,Osaka,https://linkedin.example/in/kenji-mori-q,2026-05-25
+ch11,Sofia Petrova,Litware,Finance Director,Sofia,,2026-03-18
+ch12,David Cohen,Fabrikam,Head of Ops,New York,,2026-04-22
+ch13,Amara Nwosu,Kestrel Freight,CFO,Lagos,https://linkedin.example/in/amara-nwosu,2026-01-09
+ch14,Lukas Brandt,Orbitly,Office Manager,Berlin,,2026-06-30
+ch15,Mei Tanaka,Lamna Health,Procurement Lead,Tokyo,,2026-02-28

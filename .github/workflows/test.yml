@@ -1,0 +1,22 @@
+name: test
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit tests
+        run: python -m unittest -v
+      - name: Release gate passes on every case file
+        run: for f in cases/*.jsonl; do python -m champion gate "$f" || exit 1; done
+      - name: The naive matcher is still blocked
+        run: "! python -m champion gate cases/dev.jsonl --matcher naive"
+      - name: The checker runs on the sample data
+        run: python -m champion run data --out out
