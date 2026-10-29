@@ -4,7 +4,7 @@ When a past champion changes jobs, this finds them at the new company. When it i
 
 [![test](https://github.com/Manveen07/champion-move-checker/actions/workflows/test.yml/badge.svg)](https://github.com/Manveen07/champion-move-checker/actions/workflows/test.yml)
 
-Python 3.11+, nothing to install · 60 tests · a release gate in CI · made-up data · built in October 2026
+Python 3.11+, nothing to install · 60 tests · a release gate in CI · made-up data · built in one day (29 Oct 2026) with Claude Code
 
 ```
 $ python -m champion gate cases/dev.jsonl --matcher naive      # the naive version
@@ -26,7 +26,7 @@ Then three blind test sets, each written by a separate agent that never saw the 
 | holdout-2 | 25/31 = 81%, BLOCKED | 1 | 1 | 13% | 27/31, PASS |
 | holdout-3 | 20/31 = 65%, BLOCKED | 0 | 1 | 32% | 25/31, PASS |
 
-No blind set has passed on its first run yet. The raw first-run logs are in [`runs/`](runs/); the code at those moments wasn't committed, so the logs are the only record (more in `runs/README.md`). The after-fix scores are fitted to the sets, not evidence. What each set caught, and what I'd change next, is below.
+Across all 93 blind signals on first runs: 1 wrong alert, 4 lost moves, and the rest of the misses were extra holds. No blind set has passed on its first run yet. The raw first-run logs are in [`runs/`](runs/); the code at those moments wasn't committed, so the logs are the only record (more in `runs/README.md`). The after-fix scores are fitted to the sets, not evidence. What each set caught, and what I'd change next, is below.
 
 ## Why this exists
 
@@ -51,6 +51,16 @@ From `python -m champion run data` (15 champions, 22 job-change signals: 9 alert
 | Elena Rossi, Contoso | Elena Rossi at Adatum since 2026-01 | HOLD | the CRM saw them at Contoso on 2026-07-20 |
 | Amara Nwosu, Kestrel Freight | Amara Nwosu, CFO at Tailspin Toys | HOLD | name and history fit, but the profile URL differs from the CRM's |
 | Priya Raman, Contoso | Priya Raman, a designer at Litware, never at Contoso | NO_MATCH | a namesake (the real one, now at Proseware, is an alert) |
+
+What a reviewer gets for a held match (one row of `out/review.csv`):
+
+```
+champion     Elena Rossi, was at Contoso
+signal       Elena Rossi, Office Manager at Adatum
+reasons      started at Adatum in 2026-01, but the CRM saw them at Contoso on 2026-07-20
+```
+
+They answer one question: is this our champion, and have they moved? In Slack that would be two buttons, which aren't built here.
 
 ## The failure it's built around
 
