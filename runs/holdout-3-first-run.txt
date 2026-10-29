@@ -1,0 +1,21 @@
+/mnt/c/Users/Manveen/sealed/champion-holdout-3.jsonl: 26 cases, 31 signals, matcher careful
+agreement with labels  20/31 = 65%
+  wrong alerts           0       must be 0
+  lost moves             1       must be 0
+  needless holds        10   32%  at most 20%
+  alerts on name alone   0       must be 0
+disagreements:
+  m03-a      short form of a long first name, Bangalore vs Bengaluru label MATCH    got HOLD     'Venkat Raghunathan' may be another spelling or a short form of 'Venkataraman Raghunathan'
+  m04-a      transliterated Russian name  label MATCH    got NO_MATCH different name ('Evgenia Scherbinina')
+  m07-a      former colleague with same first name and middle initial label NO_MATCH got HOLD     same first name and Ardent Freightworks in their history, new surname: maybe a name change
+  m09-a      surname prefix MacAllister vs McAllister label MATCH    got HOLD     same first name and Carrickmoor Distilling Co. in their history, new surname: maybe a name change
+  m10-a      common-name namesake with shared history beside the real move label NO_MATCH got HOLD     name fits and Meridian Paylink is in their history, but the profile URL differs from the CRM's
+  m12-a      same move reported by two sources label MATCH    got HOLD     'Seun Adeyemi-Clarke' is 'Oluwaseun Adeyemi-Clarke' written another way; 2 signals look like Oluwaseun Adeyemi-Clarke: a person picks
+  m12-b      same move reported by two sources label MATCH    got HOLD     same name; 2 signals look like Oluwaseun Adeyemi-Clarke: a person picks
+  m16-a      ampersand vs and in history, no profile on either side label MATCH    got HOLD     same name and city, but Harlan & Pryce isn't in their listed history: an incomplete profile or a namesake
+  m21-a      initial instead of first name, plus an unrelated namesake label MATCH    got HOLD     only an initial for the first name ('T. Vandermeulen')
+  m22-a      family name first vs given name first label MATCH    got HOLD     same name and city, but Shirakawa Precision isn't in their listed history: an incomplete profile or a namesake
+  m24-a      moved twice, profile slug changed label MATCH    got HOLD     name fits and Wexley Analytics is in their history, but the profile URL differs from the CRM's
+BLOCK 1 lost move(s): m04-a
+BLOCK needless holds 10/31 = 32%, over 20%
+BLOCKED

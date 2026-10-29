@@ -1,0 +1,17 @@
+cases/holdout-1.jsonl: 26 cases, 31 signals, matcher careful
+agreement with labels  23/31 = 74%
+  wrong alerts           0       must be 0
+  lost moves             2       must be 0
+  needless holds         6   19%  at most 20%
+  alerts without proof   0       must be 0
+disagreements:
+  h03-a      transliteration-no-profiles  label MATCH    got NO_MATCH different name ('Evgeniya Kharitonova')
+  h05-a      surname-changed-same-url     label MATCH    got HOLD     same profile URL, but the name is now 'Priya Castellanos': a name change or a wrong URL
+  h07-a      same-url-name-formatting     label MATCH    got HOLD     same profile URL, but the name is now 'Marykate ODonnell': a name change or a wrong URL
+  h08-a      url-slug-changed             label MATCH    got HOLD     name fits and Kestrin Security is in their history, but the profile URL differs from the CRM's
+  h09-a      namesake-shared-history      label NO_MATCH got HOLD     name fits and Saffronet Payments is in their history, but the profile URL differs from the CRM's
+  h14-a      two-signals-history-decides  label MATCH    got HOLD     city changed (Bangalore to Bengaluru) and no profile URL to confirm it's them
+  h14-b      two-signals-history-decides  label NO_MATCH got HOLD     name fits, but no work history to check Cindral Data against
+  h19-a      old-company-missing-from-history label HOLD     got NO_MATCH Vexmoor Chemicals is not in their work history: a namesake
+BLOCK 2 lost move(s): h03-a, h19-a
+BLOCKED

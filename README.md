@@ -7,7 +7,7 @@ When a past champion changes jobs, this finds them at the new company. When it i
 Python 3.11+, nothing to install · 60 tests · a release gate in CI · made-up data · built in October 2026
 
 ```
-$ python -m champion gate cases/dev.jsonl --matcher naive      # the first version anyone builds
+$ python -m champion gate cases/dev.jsonl --matcher naive      # the naive version
 agreement with labels  8/29 = 28%
   wrong alerts          12       must be 0
   lost moves             9       must be 0
@@ -26,7 +26,7 @@ Then three blind test sets, each written by a separate agent that never saw the 
 | holdout-2 | 25/31 = 81%, BLOCKED | 1 | 1 | 13% | 27/31, PASS |
 | holdout-3 | 20/31 = 65%, BLOCKED | 0 | 1 | 32% | 25/31, PASS |
 
-No blind set has passed on its first run yet. What each one caught, and what I'd change next, is below.
+No blind set has passed on its first run yet. The raw first-run logs are in [`runs/`](runs/); the code at those moments wasn't committed, so the logs are the only record (more in `runs/README.md`). The after-fix scores are fitted to the sets, not evidence. What each set caught, and what I'd change next, is below.
 
 ## Why this exists
 
@@ -54,7 +54,7 @@ From `python -m champion run data` (15 champions, 22 job-change signals: 9 alert
 
 ## The failure it's built around
 
-The first version most people build says: same name, different company, so they moved. It's in the repo on purpose (`champion/naive.py`). On 29 labelled signals it agreed with 8. It would have told account owners that 12 people were their champions on the move when they were namesakes or hadn't moved at all (a designer in Chennai who shares a champion's name; "Litware Inc." and "Litware" read as two companies). And it silently dropped 9 real moves (Bob for Robert, José written Jose, a new surname after marriage).
+The naive version says: same name, different company, so they moved. It's in the repo on purpose (`champion/naive.py`). On 29 labelled signals it agreed with 8. It would have told account owners that 12 people were their champions on the move when they were namesakes or hadn't moved at all (a designer in Chennai who shares a champion's name; "Litware Inc." and "Litware" read as two companies). And it silently dropped 9 real moves (Bob for Robert, José written Jose, a new surname after marriage).
 
 The fix weighs evidence from strongest to weakest:
 
@@ -105,7 +105,7 @@ BLOCKED
 
 The wrong alert was a profile that matched the CRM's, but the new job started nine months before the champion last replied from the old company. A profile URL proves who it is, not that they left, so that now holds. The lost move was "Becky" for "Rebecca": the nickname table was too small, and now has 138 common nicknames. A short form of a first name ("Seun" for "Oluwaseun") also now counts as weak evidence: a match only with the same profile URL. holdout-2 passes 27 of 31 now, with 4 holds by design.
 
-The third set, holdout-3 (31 signals), was written after every fix, with the situations the first two missed. It was blocked on reviewer time: 10 needless holds, 32%, over my own 20% budget. It also found real gaps: "LLP" and "K.K." company suffixes, MacAllister and McAllister, a surname spelled two ways (Shcherbinina and Scherbinina, which was the lost move), and the same move reported by two sources, which my "two people fit" rule held. Those are fixed. holdout-3 passes 25 of 31 now, with 6 holds by design.
+The third set, holdout-3 (31 signals), was written after every fix, with the situations the first two missed. It was blocked on reviewer time: 10 needless holds, 32%, over my own 20% budget. It also found real gaps: "LLP" and "K.K." company suffixes, MacAllister and McAllister, a surname spelled two ways (Shcherbinina and Scherbinina, which was the lost move), and the same move reported by two sources, which my "two people fit" rule held. Those are fixed. holdout-3 passes 25 of 31 now, with 6 holds by design, at 19% needless holds against a 20% budget, after fixes made against it: fitted, not proof.
 
 I stopped at three blind sets, as I'd decided before the third. More sets from the same kind of AI labeller keep finding the long tail of names; the next real test is labelled real data.
 
@@ -118,7 +118,7 @@ The biggest single cause is a profile URL that differs from the CRM's, held 6 ti
 ## How it's tested
 
 - **29 dev cases** (`cases/dev.jsonl`), written and labelled while building, each one a way the naive version goes wrong. The careful matcher passes them by construction, so they prove little on their own.
-- **Three blind holdouts** (`cases/holdout-*.jsonl`), each written by a separate AI agent from the decision rules only, never the code, and scored once before any fix (the table at the top). The labels come from AI agents, not people, and the agents had similar briefs, so they can share blind spots. Each set was used to fix the code after its first run, so only the first-run numbers count as blind. 1 wrong alert in 93 blind signals only bounds the wrong-alert rate near 5% (4.7 divided by the number of signals, at 95% confidence). Real labelled data would tighten that.
+- **Three blind holdouts** (`cases/holdout-*.jsonl`), each written by a separate AI agent from the decision rules only, never the code, and scored once before any fix (the table at the top). The labels come from AI agents, not people, and the agents had similar briefs, so they can share blind spots. Each set was used to fix the code after its first run, so only the first-run numbers count as blind. 1 wrong alert in 93 blind signals means the true rate could still be up to about 5%. Real labelled data would tighten that.
 - **A release gate** (`champion/gate.py`). A matcher ships only with 0 wrong alerts, 0 lost moves, needless holds on at most 20% of signals, and no alert on a name alone. The 20% is a budget I chose for reviewer time. Holding everything is safe, and the gate still blocks it: a test checks that.
 - **60 unit tests**, one per rule, plus tests that the gate fails the matchers it should fail.
 - **CI on every push**: the tests, the gate on every case file, a check that the naive matcher is still blocked, and a run on the sample data.
@@ -142,14 +142,17 @@ python -m champion run data --out out                # out/alerts.csv and out/re
 
 Before switching a live table to a new version of the rules, replay the old and new on the labelled cases (`compare`) and ship only through the gate.
 
+On Salesforce instead of Clay, the same shape: champions are Contacts with a champion flag, each signal and its decision, proof and reasons go into a custom object linked to the Contact, MATCH creates a task for the owner of the new Account, and HOLD rows sit in a list view (or a Slack message) for review.
+
 ## Limits
 
 - Made-up data. Real job-change data is messier: missing fields, stale profiles, many more namesakes.
 - Latin script only, 138 English nicknames, and a loose spelling check (it also pairs Brian and Bruno, and Dan and Daniela), which is why a spelling match alone only ever holds.
 - Each labelled case has one champion, so "one signal fits two champions" is covered by a unit test, not by the gate.
 - Rules, not a model. Every decision is explainable and replays for free, but anything the rules don't cover goes to HOLD, which costs reviewer time. An LLM could summarise the evidence on a held match for the reviewer; it shouldn't decide a MATCH on its own.
-- No memory between runs: a person held last week is held again until someone resolves it.
+- No memory between runs: a person held last week is held again, and a reviewer's call isn't kept. The next step I'd build: store each reviewer's call, use it on the next run, and add it as a labelled case, so every correction becomes a test.
+- `run()` compares every champion with every signal. Fine for thousands; for more, group by surname first.
 
 ## Who built it
 
-[Manveen Singh](https://manveen.me), GTM engineer, built with Claude Code. At my day job the same habits sit behind an outbound pipeline with 870+ automated tests; how I test workflows is written up at [manveen.me/writing](https://manveen.me/writing). MIT licence.
+Manveen Singh, GTM engineer, built with Claude Code. At my day job the same habits sit behind an outbound pipeline with 870+ automated tests; how I test workflows is written up at [manveen.me/writing](https://manveen.me/writing). MIT licence.

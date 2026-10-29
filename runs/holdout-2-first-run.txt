@@ -1,0 +1,16 @@
+/mnt/c/Users/Manveen/sealed/champion-holdout-2.jsonl: 26 cases, 31 signals, matcher careful
+agreement with labels  25/31 = 81%
+  wrong alerts           1       must be 0
+  lost moves             1       must be 0
+  needless holds         4   13%  at most 20%
+  alerts on name alone   0       must be 0
+disagreements:
+  k03-a      transliterated first name, champion has no profile label MATCH    got HOLD     'Alexander Belozerov' may be another spelling of 'Aleksandr Belozerov'
+  k07-a      profile URL slug changed     label MATCH    got HOLD     name fits and Fenmark Robotics is in their history, but the profile URL differs from the CRM's
+  k09-a      namesake with shared history label NO_MATCH got HOLD     name fits and Stackridge Technologies is in their history, but the profile URL differs from the CRM's
+  k12-a      nickname matched by profile, plus a namesake abroad label MATCH    got HOLD     same profile URL, but the name is now 'Seun Adeyemi': a name change or a wrong URL
+  k19-a      dates contradict             label HOLD     got MATCH    same name
+  k26-b      two records of the same move, plus a namesake label MATCH    got NO_MATCH different name ('Becky Thornbury')
+BLOCK 1 wrong alert(s): k19-a
+BLOCK 1 lost move(s): k26-b
+BLOCKED
