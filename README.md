@@ -20,13 +20,13 @@ PASS
 
 Then three blind test sets, each written by a separate agent that never saw the code, and each scored once before any fix:
 
-| Blind set | First run | Wrong alerts | Lost moves | Needless holds | After fixing what it found |
-|---|---|---|---|---|---|
-| holdout-1 | 23/31 = 74%, BLOCKED | 0 | 2 | 19% | 28/31, PASS |
-| holdout-2 | 25/31 = 81%, BLOCKED | 1 | 1 | 13% | 27/31, PASS |
-| holdout-3 | 20/31 = 65%, BLOCKED | 0 | 1 | 32% | 25/31, PASS |
+| Blind set | First run | 95% range | Wrong alerts | Lost moves | Needless holds | After fixing what it found |
+|---|---|---|---|---|---|---|
+| holdout-1 | 23/31 = 74%, BLOCKED | 57-86% | 0 | 2 | 19% | 28/31, PASS |
+| holdout-2 | 25/31 = 81%, BLOCKED | 64-91% | 1 | 1 | 13% | 27/31, PASS |
+| holdout-3 | 20/31 = 65%, BLOCKED | 47-79% | 0 | 1 | 32% | 25/31, PASS |
 
-Across all 93 blind signals on first runs: 1 wrong alert, 4 lost moves, and the rest of the misses were extra holds. No blind set has passed on its first run yet. The raw first-run logs are in [`runs/`](runs/); the code at those moments wasn't committed, so the logs are the only record (more in `runs/README.md`). The after-fix scores are fitted to the sets, not evidence. What each set caught, and what I'd change next, is below.
+With 31 signals a set, a first run of 74% fits anything from 57% to 86%. The range is a Wilson 95% interval for one set on one code version. It covers sample size only, not blind spots the AI labellers share (see How it's tested). Across all 93 blind signals on first runs: 1 wrong alert, 4 lost moves, and the rest of the misses were extra holds. No blind set has passed on its first run yet. The raw first-run logs are in [`runs/`](runs/); the code at those moments wasn't committed, so the logs are the only record (more in `runs/README.md`). The after-fix scores are fitted to the sets, not evidence. What each set caught, and what I'd change next, is below.
 
 ## Why this exists
 
